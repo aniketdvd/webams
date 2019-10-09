@@ -2,7 +2,7 @@
   "name": "webams",
   "version": "1.0.0",
   "description": "ticketing tool web app",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,10 +10,18 @@
     "type": "git",
     "url": "git+https://github.com/aniketdvd/webams.git"
   },
-  "author": "",
+  "author": "aniketdvd",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/aniketdvd/webams/issues"
   },
-  "homepage": "https://github.com/aniketdvd/webams#readme"
+  "homepage": "https://github.com/aniketdvd/webams#readme",
+  "keywords": [
+    "node",
+    "javascript",
+    "nodejs",
+    "ticketing",
+    "helpdesk",
+    "tool"
+  ]
 }
