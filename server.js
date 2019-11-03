@@ -9,8 +9,8 @@ const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
-
 const initializePassport = require('./passport-config');
+
 initializePassport(
     passport,
     email => users.find(user => user.email === email),
@@ -32,11 +32,11 @@ app.use(passport.session());
 app.use(methodOverride('_method'));
 
 app.get('/', checkAuthenticated, (req, res) => {
-    res.render('index.ejs', { name: req.user.name });
+    res.render('Index.ejs', { name: req.user.name });
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
-    res.render('login.ejs');
+    res.render('Login.ejs');
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -46,7 +46,7 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 }));
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
-    res.render('register.ejs');
+    res.render('Register.ejs');
 })
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
