@@ -35,6 +35,12 @@ app.get('/', checkAuthenticated, (req, res) => {
     res.render('Index.ejs', { name: req.user.name });
 })
 
+app.get('/report', checkAuthenticated, (req, res) => {
+    res.render('NewTicket.ejs', {
+        name: req.user.name
+    }); 
+})
+
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('Login.ejs');
 })
