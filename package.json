@@ -33,7 +33,8 @@
     "method-override": "^3.0.0",
     "mysql": "^2.17.1",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "dotenv": "^8.1.0",

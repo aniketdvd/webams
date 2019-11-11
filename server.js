@@ -10,6 +10,10 @@ const flash = require('express-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const initializePassport = require('./passport-config');
+const favicon = require('serve-favicon');
+const path = require('path');
+
+app.use(favicon(path.join(__dirname, 'public', 'webams.svg')));
 
 initializePassport(
     passport,
