@@ -36,7 +36,12 @@ app.use(passport.session());
 app.use(methodOverride('_method'));
 
 app.get('/', checkAuthenticated, (req, res) => {
-    res.render('Index.ejs', { name: req.user.name });
+    if (req.user.role === "client") {
+        res.render('Index.ejs', { name: req.user.name });
+    } else {
+        res.render('IndexDev.js', { name: req.user.name });
+        /* ------- checkpoint ------- */
+    }
 })
 
 app.get('/report', checkAuthenticated, (req, res) => {
@@ -66,7 +71,8 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
             id: Date.now().toString(),
             name: req.body.name,
             email: req.body.email,
-            password: hashedPassword
+            password: hashedPassword,
+            role: "client"
         });
         res.redirect('/login');
     } catch(err) {
