@@ -38,9 +38,8 @@ app.use(methodOverride('_method'));
 app.get('/', checkAuthenticated, (req, res) => {
     if (req.user.role === "client") {
         res.render('Index.ejs', { name: req.user.name });
-    } else {
+    } else if (req.user.role === "dev") {
         res.render('IndexDev.js', { name: req.user.name });
-        /* ------- checkpoint ------- */
     }
 })
 

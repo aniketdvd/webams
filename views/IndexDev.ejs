@@ -1,0 +1,57 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WebAMS dashboard | dev</title>
+  </head>
+  <body>
+    <h1>Hey, <%= name %></h1>
+    <form action="/logout?_method=DELETE" method="POST">
+      <button type="submit">Log Out</button>
+    </form>
+
+    <form action="/issues">
+      <div class="action-card" onclick="javascript:this.parentNode.submit();">
+        <div class="action-card--icon">
+          <img src="" alt="">
+        </div>
+        <div class="action-card--title">
+          See the tickets and active issues
+        </div>
+        <div class="action-card--subtitle">
+          Work on the issues on the way to fix.
+        </div>
+      </div>
+    </form>
+
+    <form action="/history" method="POST">
+      <div class="action-card" onclick="javascript:this.parentNode.submit();">
+        <div class="action-card--icon">
+          <img src="" alt="">
+        </div>
+        <div class="action-card--title">
+          Previous incedents
+        </div>
+        <div class="action-card--subtitle">
+          Incedents reported earlier
+        </div>
+      </div>
+    </form>
+
+    <form action="/feedbackrec" method="POST">
+      <div class="action-card" onclick="javascript:this.parentNode.submit();">
+        <div class="action-card--icon">
+            <img src="" alt="">
+        </div>
+        <div class="action-card--title">
+          Feedback
+        </div>
+        <div class="action-card--subtitle">
+          View the feedbacks by your clients and customers around the globe.
+        </div>
+      </div>
+    </form>
+    
+  </body>
+</html>
