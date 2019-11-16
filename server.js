@@ -12,7 +12,9 @@ const methodOverride = require('method-override');
 const initializePassport = require('./passport-config');
 const favicon = require('serve-favicon');
 const path = require('path');
+const mysql = require('mysql');
 
+//serves the favicon
 app.use(favicon(path.join(__dirname, 'public', 'webams.svg')));
 
 initializePassport(
@@ -21,7 +23,14 @@ initializePassport(
     id => users.find(user => user.id === id)
 );
 
-const users = [];
+const connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+});
+
+// const users = [];
 
 app.set('view-engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
@@ -66,13 +75,26 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 app.post('/register', checkNotAuthenticated, async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        users.push({
-            id: Date.now().toString(),
-            name: req.body.name,
-            email: req.body.email,
-            password: hashedPassword,
-            role: "client"
+        let credentials = [
+            [ req.body.email, hashedPassword, "client" ]
+        ];
+        const sqlPushUser = "INSERT INTO customers (client, passphrase, role) VALUES ?";
+        connection.query(sqlPushUser, [credentials], function(err, result) {
+            if(err) {
+                throw err;
+            }
+            console.log(":::Credentials insertion success:::");
         });
+        // users.push({
+        //     id: Date.now().toString(),
+        //     name: req.body.name,
+        //     email: req.body.email,
+        //     password: hashedPassword,
+        //     role: "client"
+        // });
+
+        /* MySQL query for pushing a user */
+
         res.redirect('/login');
     } catch(err) {
         res.redirect('/register');
