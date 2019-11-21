@@ -12,7 +12,7 @@ const methodOverride = require('method-override');
 const initializePassport = require('./passport-config');
 const favicon = require('serve-favicon');
 const path = require('path');
-const addUser = require('./db-conf/addUser');
+const userFunctions = require('./db-conf/userFunctions');
 
 //serves the favicon
 app.use(favicon(path.join(__dirname, 'public', 'webams.svg')));
@@ -66,7 +66,7 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 app.post('/register', checkNotAuthenticated, async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     try {
-        addUser(req.body.email, hashedPassword, "client");
+        userFunctions.addUser(req.body.email, hashedPassword, "client");
         res.redirect('/login');
     } catch(err) {
         res.redirect('/register');
