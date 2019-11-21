@@ -10,9 +10,11 @@ function addUser(email, hashedPassword, role) {
     });
 }
 
+function deleteUser() {
+
+}
+
 module.exports = {
     addUser,
-    // deleteUser,
-    // disableUser,
-    // enableUser
-}
+    deleteUser
+};
