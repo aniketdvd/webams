@@ -17,14 +17,16 @@ function deleteUser() {
 
 }
 
+var res = [];
 function getUsers() {
-    const sqlGetUsers = "SELECT * FROM customers";
-    connection.query(sqlGetUsers, function(err, result) {
+    const sqlGetUser = "SELECT * FROM customers";
+    connection.query(sqlGetUser, function(err, result) {
         if(err) {
-            throw err
+            throw console.warn(err);
         }
-        console.log("Users object updated", result);
-        return result;
+        res = result;
+        console.log("::Updated users list::", res);
+        return res;
     });
 }
 
