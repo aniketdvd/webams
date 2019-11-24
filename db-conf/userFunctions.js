@@ -23,7 +23,7 @@ function getUsers() {
         if(err) {
             throw console.warn(err);
         }
-        console.log("::Updated users list::", typeof(result));
+        console.log("::Updated users list::\n", result);
     });
 }
 
