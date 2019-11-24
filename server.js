@@ -16,6 +16,7 @@ const userFunctions = require('./db-conf/userFunctions');
 
 //serves the favicon
 app.use(favicon(path.join(__dirname, 'public', 'webams.svg')));
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 initializePassport(
     passport,
