@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="67px" height="67px" viewBox="0 0 67 67" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>B30F5F45-7AC9-49CB-824B-88413A3C8B30</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="IT-Ticketing-Best-Practices" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-177.000000, -1819.000000)" id="Requests">
+            <g transform="translate(177.000000, 1819.000000)">
+                <rect id="Rectangle-path" fill="#FFFFFF" fill-rule="nonzero" opacity="0.01" x="0" y="0" width="67" height="67"></rect>
+                <path d="M49,2.89 L7,2.89 C7,6.2037085 4.3137085,8.89 1,8.89 L1,32.55 C4.3137085,32.55 7,35.2362915 7,38.55 L49,38.55 C49,35.2362915 51.6862915,32.55 55,32.55 L55,8.89 C51.6862915,8.89 49,6.2037085 49,2.89 Z" id="Shape" stroke="#A3B0BF" stroke-width="1.5" fill="#DFE7EB" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round"></path>
+                <rect id="Rectangle-path" stroke="#A3B0BF" stroke-width="1.5" fill="#FFFFFF" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round" x="9.64" y="8.75" width="36.71" height="23.93" rx="1.79"></rect>
+                <path d="M18.07,17.15 L37.93,17.15" id="Shape" stroke="#A3B0BF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M22.76,24.3 L33.24,24.3" id="Shape" stroke="#A3B0BF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M64.21,38.71 C60.2693471,30.6377197 50.8969789,26.809656 42.4318119,29.8148851 C33.9666449,32.8201142 29.1061033,41.7010203 31.1375705,50.4510829 C33.1690377,59.2011454 41.4451869,65.0321583 50.3685195,64.0003687 C59.2918521,62.9685791 66.0189494,55.4027666 66,46.42 C65.994015,43.7477097 65.3819958,41.1115822 64.21,38.71 Z" id="Shape" stroke="#08C7FB" stroke-width="1.5" fill="#D8F4FD" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M48.31,38.92 L48.31,53.92" id="Shape" stroke="#08C7FB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M55.81,46.42 L40.81,46.42" id="Shape" stroke="#08C7FB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>
