@@ -24,6 +24,9 @@ initializePassport(
     id => users.find(user => user.id === id)
 );
 
+let users = userFunctions.getUsers();
+// console.log(users);
+
 app.set('view-engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
@@ -70,6 +73,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
         userFunctions.addUser(req.body.email, hashedPassword, "client");
         res.redirect('/login');
     } catch(err) {
+        console.log(err); /*catch*/
         res.redirect('/register');
     }
 })
