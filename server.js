@@ -13,6 +13,7 @@ const initializePassport = require('./passport-config');
 const favicon = require('serve-favicon');
 const path = require('path');
 const userFunctions = require('./db-conf/userFunctions');
+const connection = require('./db-conf/connect');
 
 //serves the favicon
 app.use(favicon(path.join(__dirname, 'public', 'webams.svg')));
@@ -25,7 +26,14 @@ initializePassport(
 );
 
 let users = new Object;
-users = userFunctions.getUsers();
+const sqlGetUser = "SELECT * FROM customers";
+connection.query(sqlGetUser, function(err, result) {
+    if(err) {
+        throw console.warn(err);
+    }
+    users = result;
+    console.log("::Updated users list::\n", users);
+});
 
 app.set('view-engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
@@ -70,10 +78,9 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 app.post('/register', checkNotAuthenticated, async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     try {
-        userFunctions.addUser(req.body.email, req.body.name, hashedPassword, "client");
+        userFunctions.addUser(Date.now().toString(), req.body.email, req.body.name, hashedPassword, "client");
         res.redirect('/login');
     } catch(err) {
-        console.log(err); /*catch*/
         res.redirect('/register');
     }
 })
