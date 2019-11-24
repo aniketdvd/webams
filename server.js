@@ -12,7 +12,10 @@ const methodOverride = require('method-override');
 const initializePassport = require('./passport-config');
 const favicon = require('serve-favicon');
 const path = require('path');
+const userFunctions = require('./db-conf/userFunctions');
+const connection = require('./db-conf/connect');
 
+//serves the favicon
 app.use(favicon(path.join(__dirname, 'public', 'webams.svg')));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
@@ -22,7 +25,18 @@ initializePassport(
     id => users.find(user => user.id === id)
 );
 
-const users = [];
+let users = new Object;
+const sqlGetUser = "SELECT * FROM customers";
+let refreshUserList = () => {
+    connection.query(sqlGetUser, function(err, result) {
+        if(err) {
+            throw console.warn(err);
+        }
+        users = result;
+        console.log("::Updated users list::\n", users);
+    });
+}
+refreshUserList();
 
 app.set('view-engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
@@ -65,15 +79,10 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 })
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
     try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        users.push({
-            id: Date.now().toString(),
-            name: req.body.name,
-            email: req.body.email,
-            password: hashedPassword,
-            role: "client"
-        });
+        userFunctions.addUser(Date.now().toString(), req.body.email, req.body.name, hashedPassword, "client");
+        refreshUserList();
         res.redirect('/login');
     } catch(err) {
         res.redirect('/register');
