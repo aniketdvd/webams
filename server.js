@@ -70,7 +70,7 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 app.post('/register', checkNotAuthenticated, async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     try {
-        userFunctions.addUser(req.body.email, hashedPassword, "client");
+        userFunctions.addUser(req.body.email, req.body.name, hashedPassword, "client");
         res.redirect('/login');
     } catch(err) {
         console.log(err); /*catch*/

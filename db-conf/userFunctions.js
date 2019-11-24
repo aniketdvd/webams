@@ -1,10 +1,10 @@
 const connection = require('./connect');
 
-function addUser(email, hashedPassword, role) {
+function addUser(email, name, hashedPassword, role) {
     let credentials = [
-        [email, hashedPassword, role]
+        [email, name, hashedPassword, role]
     ];
-    const sqlPushUser = "INSERT INTO customers (client, passphrase, role) VALUES ?";
+    const sqlPushUser = "INSERT INTO customers (email, name, hashedPassword, role) VALUES ?";
     connection.query(sqlPushUser, [credentials], function(err, result) {
         if(err) {
             throw console.warn(err);
