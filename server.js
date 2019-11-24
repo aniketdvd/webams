@@ -24,7 +24,8 @@ initializePassport(
     id => users.find(user => user.id === id)
 );
 
-let users = userFunctions.getUsers();
+let users = new Object;
+users = userFunctions.getUsers();
 
 app.set('view-engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
