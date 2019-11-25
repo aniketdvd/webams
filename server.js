@@ -33,7 +33,7 @@ let refreshUserList = () => {
             throw console.warn(err);
         }
         users = result;
-        console.log("::Updated users list::\n", users);
+        console.log("::Updated users list::\n");
     });
 }
 refreshUserList();

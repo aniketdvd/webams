@@ -9,7 +9,7 @@ function addUser(id, email, name, hashedPassword, role) {
         if(err) {
             throw console.warn(err);
         }
-        console.log(":::Credentials insertion success:::", result);
+        console.log(":::Credentials insertion success:::");
     });
 }
 
