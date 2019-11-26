@@ -26,14 +26,19 @@ let reportingDate = () => {
     return da.getDate() + '-' + da.getMonth() + '-' + da.getFullYear();
 }
 
-let reportingTime= () => {
+let reportingTime = () => {
     let ti = new Date();
     /* Custom Time formatting */
     return ti.getHours() + ':' + ti.getMinutes();
 }
 
+let id = () => {
+    return Date.now().toString();
+}
+
 module.exports = {
     Ticket,
     reportingDate,
-    reportingTime
+    reportingTime,
+    id
 };

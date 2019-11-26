@@ -69,6 +69,7 @@ app.get('/report', checkAuthenticated, (req, res) => {
 app.post('/newticket', checkAuthenticated, (req, res) => {
     try {
         let ticket = new Ticket(
+            Ticket.id(),
             req.user.email, 
             req.user.name, 
             req.body.ticketTitle,
