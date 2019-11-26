@@ -68,7 +68,16 @@ app.get('/report', checkAuthenticated, (req, res) => {
 
 app.post('/newticket', checkAuthenticated, (req, res) => {
     try {
-        
+        let ticket = new Ticket(
+            req.user.email, 
+            req.user.name, 
+            req.body.ticketTitle,
+            req.body.tickerDesciption,
+            Ticket.reportingDate(),
+            Ticket.reportingTime(),
+            req.body.priority,
+            req.body.status
+        )
     } catch (err) {
         res.redirect('/report');
     }

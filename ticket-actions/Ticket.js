@@ -20,4 +20,20 @@ class Ticket {
     }
 }
 
-module.exports = Ticket;
+let reportingDate = () => {
+    let da = new Date();
+    /* Custom Date Formatting */
+    return da.getDate() + '-' + da.getMonth() + '-' + da.getFullYear();
+}
+
+let reportingTime= () => {
+    let ti = new Date();
+    /* Custom Time formatting */
+    return ti.getHours() + ':' + ti.getMinutes();
+}
+
+module.exports = {
+    Ticket,
+    reportingDate,
+    reportingTime
+};
