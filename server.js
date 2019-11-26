@@ -78,7 +78,11 @@ app.post('/newticket', checkAuthenticated, (req, res) => {
             req.body.priority,
             req.body.status
         )
+        
+        /* push ticket through query -- 'client-ticket-actions.js' */
+
     } catch (err) {
+        console.warn(err);
         res.redirect('/report');
     }
 })
