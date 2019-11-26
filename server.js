@@ -13,6 +13,7 @@ const initializePassport = require('./user-auth/passport-config');
 const favicon = require('serve-favicon');
 const path = require('path');
 const userFunctions = require('./db-conf/userFunctions');
+const Ticket = require('./ticket-actions/Ticket');
 const connection = require('./db-conf/connect');
 
 //serves the favicon
@@ -60,8 +61,17 @@ app.get('/', checkAuthenticated, (req, res) => {
 
 app.get('/report', checkAuthenticated, (req, res) => {
     res.render('NewTicket.ejs', {
-        name: req.user.name
-    }); 
+        name: req.user.name,
+        email: req.user.email
+    });
+})
+
+app.post('/newticket', checkAuthenticated, (req, res) => {
+    try {
+        
+    } catch (err) {
+        res.redirect('/report');
+    }
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
