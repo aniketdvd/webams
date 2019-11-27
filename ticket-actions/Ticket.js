@@ -18,6 +18,18 @@ class Ticket {
         this.priority = priority;
         this.status = status;
     }
+    ticketDat = () => {
+        return [
+            this.clientEmail,
+            this.clientName,
+            this.title,
+            this.description,
+            this.date,
+            this.time,
+            this.priority,
+            this.status
+        ] 
+    }
 }
 
 let reportingDate = () => {
