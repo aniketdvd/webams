@@ -13,6 +13,8 @@ const initializePassport = require('./user-auth/passport-config');
 const favicon = require('serve-favicon');
 const path = require('path');
 const userFunctions = require('./db-conf/userFunctions');
+const clientTicketActions = require('./ticket-actions/ClientTicketActions');
+// const supportTicketActions = require('./ticket-actions/SupportTicketActions');
 const Ticket = require('./ticket-actions/Ticket');
 const connection = require('./db-conf/connect');
 
@@ -80,6 +82,8 @@ app.post('/newticket', checkAuthenticated, (req, res) => {
             req.body.status
         )
         
+        ticket.pushTicket(ticket.ticketDat()); // --incomplete
+
         /* push ticket through query -- 'client-ticket-actions.js' */
 
     } catch (err) {
