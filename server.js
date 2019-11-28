@@ -92,6 +92,24 @@ app.post('/newticket', checkAuthenticated, (req, res) => {
     }
 })
 
+app.post('/history', checkAuthenticated, (req, res) => {
+    if(req.user.role === "client") {
+        res.render('ViewTickets.ejs', {
+            name: req.user.name,
+            email: req.user.email
+        });
+    }
+})
+
+app.post('/feedback', checkAuthenticated, (req, res) => {
+    if(req.user.role === "client") {
+        res.render('Feedback.ejs', {
+            name: req.user.name,
+            email: req.user.email
+        });
+    }
+})
+
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('Login.ejs');
 })
