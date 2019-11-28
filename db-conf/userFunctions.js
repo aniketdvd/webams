@@ -1,6 +1,6 @@
 const connection = require('./connect');
 
-function addUser(id, email, name, hashedPassword, role) {
+let addUser = (id, email, name, hashedPassword, role) => {
     let credentials = [
         [id, email, name, hashedPassword, role]
     ];
