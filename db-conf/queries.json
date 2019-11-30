@@ -1,0 +1,3 @@
+{
+    "sqlPushUser": "INSERT INTO customers (id, email, name, password, role) VALUES ?"
+}
