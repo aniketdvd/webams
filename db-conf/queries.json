@@ -1,3 +1,4 @@
 {
+    "sqlGetUser": "SELECT * FROM customers",
     "sqlPushUser": "INSERT INTO customers (id, email, name, password, role) VALUES ?"
 }

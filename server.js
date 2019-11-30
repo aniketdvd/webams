@@ -17,6 +17,7 @@ const clientTicketActions = require('./ticket-actions/ClientTicketActions');
 // const supportTicketActions = require('./ticket-actions/SupportTicketActions');
 const Ticket = require('./ticket-actions/Ticket');
 const connection = require('./db-conf/connect');
+const query = require('./db-conf/queries.json');
 
 //serves the favicon
 app.use(favicon(path.join(__dirname, 'public', 'webams.svg')));
@@ -29,9 +30,8 @@ initializePassport(
 );
 
 let users = new Object;
-const sqlGetUser = "SELECT * FROM customers";
 let refreshUserList = () => {
-    connection.query(sqlGetUser, function(err, result) {
+    connection.query(query.sqlGetUser, function(err, result) {
         if(err) {
             throw console.warn(err);
         }
