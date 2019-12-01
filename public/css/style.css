@@ -2,3 +2,21 @@
     margin: 0;
     padding: 0;
 }
+button {
+    padding:10px;
+    padding-left:32px;
+    padding-right:32px;
+    border:0;
+    border-radius:2pt;
+    background-color:#1DC8EC;
+    color:#ffffff;
+    box-shadow: 1px 1px 16px #1dc8ec;
+  }
+  a{
+    text-decoration: none;
+  }
+  form {
+      float:left;
+    
+  }
+  
