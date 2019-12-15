@@ -1,7 +1,8 @@
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
-  
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
@@ -11,7 +12,6 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const initializePassport = require('./user-auth/passport-config');
 const favicon = require('serve-favicon');
-const path = require('path');
 const userFunctions = require('./db-conf/userFunctions');
 const clientTicketActions = require('./ticket-actions/ClientTicketActions');
 // const supportTicketActions = require('./ticket-actions/SupportTicketActions');
@@ -22,12 +22,40 @@ const query = require('./db-conf/queries.json');
 //serves the favicon
 app.use(favicon(path.join(__dirname, 'public', 'webams.svg')));
 app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use(session({
+    secret: 'tempsessionsecret',
+    resave: false,
+    saveUninitialized: false
+}));
+app.set('view-engine', 'ejs');
+app.use(express.urlencoded({ extended: false }));
+app.use(flash());
 
-initializePassport(
-    passport,
-    email => users.find(user => user.email === email),
-    id => users.find(user => user.id === id)
-);
+let installationStatus = () => {
+    if(fs.existsSync('.env')) {
+        return true;
+    } else {
+        console.error('WebAMS is not installed or configured!');
+        return false;
+    }
+}
+app.get('/', (req, res) => {
+    if(installationStatus() === true) {
+        initializePassport(
+            passport,
+            email => users.find(user => user.email === email),
+            id => users.find(user => user.id === id)
+        );
+        refreshUserList();
+        res.redirect('/dashboard');
+    } else {
+        res.render('INSTALL.ejs');
+    }
+})
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(methodOverride('_method'));
 
 let users = new Object;
 let refreshUserList = () => {
@@ -39,21 +67,8 @@ let refreshUserList = () => {
         console.log("::Updated users list::\n");
     });
 }
-refreshUserList();
 
-app.set('view-engine', 'ejs');
-app.use(express.urlencoded({ extended: false }));
-app.use(flash());
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(methodOverride('_method'));
-
-app.get('/', checkAuthenticated, (req, res) => {
+app.get('/dashboard', checkAuthenticated, (req, res) => {
     if (req.user.role === "client") {
         res.render('Index.ejs', { name: req.user.name });
     } else if (req.user.role === "dev") {
@@ -115,7 +130,7 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/dashboard',
     failureRedirect: '/login',
     failureFlash: true
 }));
@@ -150,7 +165,7 @@ function checkAuthenticated(req, res, next) {
 
 function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-        return res.redirect('/');
+        return res.redirect('/dashboard');
     }
     next();
 }
