@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/static/css/nav.css">
     <link rel="stylesheet" href="/static/css/main.css">
     <link rel="stylesheet" href="/static/css/footer.css">
-    <link rel="stylesheet" href="/static/css/element.css">
+    <link rel="stylesheet" href="/static/css/elements.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -13,28 +13,31 @@
   </head>
   <body>
     <nav>
-
+      <div class="left">
+        <span class="logo">WebAMS</span>
+      </div>
+      <div class="right">
+        <div class="menu">
+          <a href="#!">Home</a>
+          <a href="#!">Blog</a>
+        </div>
+      </div>
     </nav>
     <main> 
-      <h1>Login</h1> 
+      <h1 class="heading">Login</h1> 
       <% if (messages.error) { %> 
         <%= messages.error %> 
       <% } %> 
-      <form action="/login" method="POST"> 
-        <table>
-          <tr>
-            <td><label for="email">Email</label></td> 
-            <td><input type="email" id="email" name="email" required></td> 
-          </tr>
-          <tr>
-            <td><label for="password">Password</label></td> 
-            <td><input type="password" id="password" name="password" required></td> 
-          </tr>
-         </table>
-        <button type="submit">Login</button> 
-        <a href="/register">Register</a> 
+      <div class="login-form">
+      <form action="/login" method="POST" > 
+       <p><label for="email">Email</label></p> 
+       <p><input type="email" id="email" name="email" required></p> 
+       <p><label for="password">Password</label></p> 
+       <p><input type="password" id="password" name="password" required></p>  
+       <button type="submit">Login</button> 
+       <a href="/register">Register</a> 
       </form> 
-      
+      </div>
     </main> 
   
     <footer>

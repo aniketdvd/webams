@@ -1,4 +1,9 @@
-:root {
-    --button-color:#1DC8EC;
-    --button-txtcolor:#ffffff;
+
+@font-face{
+    font-family: worksans;
+    src: url('/static/fonts/WorkSans-Regular.ttf');
+  }
+@font-face{
+   font-family: worksansbold;
+   src: url('/static/fonts/WorkSans-Bold.ttf');
 }

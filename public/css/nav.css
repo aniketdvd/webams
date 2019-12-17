@@ -1,0 +1,19 @@
+nav {
+    padding-top: 60px;
+    padding-bottom: 20px;
+    color: #fff;
+    
+}
+    .left{
+    float: left;
+
+}
+.right{
+    float: right;
+}
+.right a {
+    margin-left: 12px;
+    color: #fff;
+}
+
+
