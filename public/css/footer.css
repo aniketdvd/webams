@@ -1,0 +1,19 @@
+footer{
+    background-color: #55644d;
+    position: absolute;
+    bottom: 0;
+   color: #fff;
+   width: calc(100vw - 280px);
+   height: 20px;
+   padding-top: 3px;
+   padding-bottom: 3px;
+}
+footer a{
+    color:#98b197;
+}
+.footer-left{
+    float: left;
+}
+.footer-right{
+    float: right;
+}
