@@ -140,6 +140,14 @@ app.delete('/logout', (req, res) => {
     res.redirect('/login');
 })
 
+app.use((req, res) => {
+    res.status(404);
+    if(req.accepts('html')) {
+        res.render('404.ejs', { url: req.url });
+        return;
+    }
+})
+
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
