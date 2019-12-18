@@ -1,0 +1,22 @@
+nav {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #fff;
+    
+}
+.logo{
+    font-weight: 700;
+}
+ .left{
+    float: left;
+
+}
+.right{
+    float: right;
+}
+.right a {
+    margin-left: 12px;
+    color: #fff;
+}
+
+
