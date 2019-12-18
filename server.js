@@ -19,7 +19,6 @@ const Ticket = require('./ticket-actions/Ticket');
 const connection = require('./db-conf/connect');
 const query = require('./db-conf/queries.json');
 const webamsVersion = require('./package.json').version;
-console.log(webamsVersion);
 //serves the favicon
 app.use(favicon(path.join(__dirname, 'public', 'webams.svg')));
 app.use('/static', express.static(path.join(__dirname, 'public')));
