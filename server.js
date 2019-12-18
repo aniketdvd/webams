@@ -40,6 +40,16 @@ let installationStatus = () => {
         return false;
     }
 }
+
+app.get('/install', (req, res) => {
+    if(installationStatus() === true) {
+        res.redirect('/');
+    }
+    res.render('INSTALL.ejs', {
+        version: webamsVersion
+    });
+})
+
 app.get('/', (req, res) => {
     if(installationStatus() === true) {
         initializePassport(
@@ -50,7 +60,7 @@ app.get('/', (req, res) => {
         refreshUserList();
         res.redirect('/dashboard');
     } else {
-        res.render('INSTALL.ejs');
+        res.redirect('/install');
     }
 })
 
@@ -84,11 +94,13 @@ app.get('/dashboard', checkAuthenticated, (req, res) => {
 })
 
 app.get('/report', checkAuthenticated, (req, res) => {
-    res.render('NewTicket.ejs', {
-        name: req.user.name,
-        email: req.user.email,
-        version: webamsVersion
-    });
+    if (installationStatus() === true) {
+        res.render('NewTicket.ejs', {
+            name: req.user.name,
+            email: req.user.email,
+            version: webamsVersion
+        });
+    }
 })
 
 app.post('/newticket', checkAuthenticated, (req, res) => {
@@ -136,9 +148,12 @@ app.post('/feedback', checkAuthenticated, (req, res) => {
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
-    res.render('Login.ejs', {
-        version: webamsVersion
-    });
+    if (installationStatus() === true) {
+        res.render('Login.ejs', {
+            version: webamsVersion
+        });
+    }
+    res.redirect('/install');
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -148,9 +163,12 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 }));
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
-    res.render('Register.ejs', {
-        version: webamsVersion
-    });
+    if (installationStatus() === true) {
+        res.render('Register.ejs', {
+            version: webamsVersion
+        });
+    }
+    res.redirect('/install');
 })
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
