@@ -1,4 +1,35 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: worksans;
 }
+body{
+  background-color: #98b197;
+}
+:root {
+ 
+}
+nav, header, main, footer{
+ 
+  padding-left: 140px;
+  padding-right: 140px;
+}
+
+button {
+    padding:10px;
+    padding-left:32px;
+    padding-right:32px;
+    border:0;
+    border-radius:2pt;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.3);
+    background-color: #55644d;
+    color: #fff;
+  }
+  a{
+    text-decoration: none;
+  
+  }
+  form {
+     background-color: #fff;
+  }
+  

@@ -1,0 +1,37 @@
+ .heading{
+ margin-bottom: 32px;
+} 
+.login-form{
+    background: #fff;
+    margin-top: 15vh;
+    padding-top: 60px;
+    padding-right: 60px;
+    padding-left: 60px;
+    border-radius: 3pt;
+    width:320px;
+    height: 320px;
+    float:right;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.3);
+}
+.login-form p{
+    margin: 0;
+    margin-bottom: 18px;
+    outline: none;
+}
+.login-form label{
+    width:100%;
+    margin-bottom: 20px;
+}
+.login-form button {  
+    margin-top: 32px;
+    margin-right: 18px;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.3);
+    margin-bottom: 60px;
+}
+ .login-form input[type="email"], input[type="password"]{
+     outline: none;
+     margin-top: 12px;
+     padding-bottom: 8px;
+     border: 0;
+     border-bottom: 1px solid #3c3c3c;
+ }
