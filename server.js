@@ -18,7 +18,7 @@ const clientTicketActions = require('./ticket-actions/ClientTicketActions');
 const Ticket = require('./ticket-actions/Ticket');
 const connection = require('./db-conf/connect');
 const query = require('./db-conf/queries.json');
-
+const webamsVersion = require('./package.json').version;
 //serves the favicon
 app.use(favicon(path.join(__dirname, 'public', 'webams.svg')));
 app.use('/static', express.static(path.join(__dirname, 'public')));
@@ -70,16 +70,23 @@ let refreshUserList = () => {
 
 app.get('/dashboard', checkAuthenticated, (req, res) => {
     if (req.user.role === "client") {
-        res.render('Index.ejs', { name: req.user.name });
+        res.render('Index.ejs', { 
+            name: req.user.name,
+            version: webamsVersion
+        });
     } else if (req.user.role === "dev") {
-        res.render('IndexDev.js', { name: req.user.name });
+        res.render('IndexDev.js', { 
+            name: req.user.name,
+            version: webamsVersion
+        });
     }
 })
 
 app.get('/report', checkAuthenticated, (req, res) => {
     res.render('NewTicket.ejs', {
         name: req.user.name,
-        email: req.user.email
+        email: req.user.email,
+        version: webamsVersion
     });
 })
 
@@ -111,7 +118,8 @@ app.post('/history', checkAuthenticated, (req, res) => {
     if(req.user.role === "client") {
         res.render('ViewTickets.ejs', {
             name: req.user.name,
-            email: req.user.email
+            email: req.user.email,
+            version: webamsVersion
         });
     }
 })
@@ -120,13 +128,16 @@ app.post('/feedback', checkAuthenticated, (req, res) => {
     if(req.user.role === "client") {
         res.render('Feedback.ejs', {
             name: req.user.name,
-            email: req.user.email
+            email: req.user.email,
+            version: webamsVersion
         });
     }
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
-    res.render('Login.ejs');
+    res.render('Login.ejs', {
+        version: webamsVersion
+    });
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -136,7 +147,9 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 }));
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
-    res.render('Register.ejs');
+    res.render('Register.ejs', {
+        version: webamsVersion
+    });
 })
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
@@ -153,6 +166,17 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 app.delete('/logout', (req, res) => {
     req.logOut();
     res.redirect('/login');
+})
+
+app.use((req, res) => {
+    res.status(404);
+    if(req.accepts('html')) {
+        res.render('404.ejs', { 
+            url: req.url,
+            version: webamsVersion
+        });
+        return;
+    }
 })
 
 function checkAuthenticated(req, res, next) {
