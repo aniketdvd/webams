@@ -1,4 +1,9 @@
 {
     "sqlGetUser": "SELECT * FROM customers",
-    "sqlPushUser": "INSERT INTO customers (id, email, name, password, role) VALUES ?"
+    "sqlPushUser": "INSERT INTO customers (id, email, name, password, role) VALUES ?",
+    "sqlPushTicket": "",
+    "sqlUpdateTicket": "",
+    "sqlGetTicketByUser": "",
+    "sqlGetUnresolvedTickets": "",
+    "sqlGetResolvedTickets": ""
 }
