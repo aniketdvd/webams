@@ -89,7 +89,7 @@ app.post('/newticket', checkAuthenticated, (req, res) => {
             req.body.status
         )
         
-        ticket.pushTicket(ticket.ticketDat()); // --incomplete
+        clientTicketActions.pushTicket(ticket.ticketDat()); // --incomplete
 
         /* push ticket through query -- 'client-ticket-actions.js' */
 
