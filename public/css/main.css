@@ -22,13 +22,7 @@
     width:100%;
     margin-bottom: 20px;
 }
-.login-form input {
-    outline: none;
-    margin-top: 12px;
-    padding-bottom: 8px;
-    border: 0;
-    border-bottom: 1px solid #3c3c3c;
-}
+
 .register-form{
     background: #fff;
     margin-top: 15vh;

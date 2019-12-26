@@ -7,8 +7,7 @@ body{
   background-color: var(--accent-light);
 }
 
-nav, header, main, footer{
- 
+nav, header, main{
   padding-left: 140px;
   padding-right: 140px;
 }
