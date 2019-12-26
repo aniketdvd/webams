@@ -1,4 +1,8 @@
 footer{
     color: #dddddd;
     background-color: var(--accent-dark);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    
 }
