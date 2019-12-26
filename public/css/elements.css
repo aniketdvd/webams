@@ -27,8 +27,11 @@ box-shadow: var(--shadow-std);
     width: 63px;
     margin-right: 20px;
     border-radius: 100pt;
-    background-color: #dddd;
-    
+   
+}
+.action-card--icon img {
+    height:60px;
+    width:60px;
 }
 .action-card--title{
     color: var(--accent-dark);
