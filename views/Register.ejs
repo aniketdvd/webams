@@ -8,40 +8,41 @@
     <link rel="stylesheet" href="/static/css/nav.css">
     <link rel="stylesheet" href="/static/css/main.css">
     <link rel="stylesheet" href="/static/css/footer.css">
-    <link rel="stylesheet" href="/static/css/element.css">
+    <link rel="stylesheet" href="/static/css/elements.css">
     <title>WebAMS registration</title>
   </head>
   <body>
     <nav>
-
+      <div class="left">
+        <span class="logo">WebAMS</span>
+      </div>
+      <div class="right">
+        <div class="menu">
+          <a href="#!">Home</a>
+          <a href="#!">Blog</a>
+        </div>
+      </div>
     </nav>
     <main>
-      <h1>Register</h1>
+      <div class="register-form">
       <form action="/register" method="POST">
-        <table>
-          <tr>
-              <td><label for="name">Name</label></td>
-              <td><input type="text" id="name" name="name" required></td>
-           </tr>
-           <tr>
-              <td> <label for="email">Email</label></td>
-              <td> <input type="email" id="email" name="email" required></td>
-           </tr>
-           <tr>
-              <td><label for="password">Password</label></td>
-              <td><input type="password" id="password" name="password" required></td>
-           </tr>
-           <tr>
-              <td><label for="password">Confirm Password</label></td>
-              <td><input type="password" id="confirmPassword" name="confirmPassword" required></td>
-           </tr>
-        </table>
+        <h1>Register</h1>
+           <p> <input type="text" id="name" placeholder="Name" required></p>
+           <p><input type="email" id="email" placeholder="email" required></p>
+           <p> <input type="password" id="password" placeholder="password" required></p>
+           <p><input type="password" id="confirmPassword" placeholder="confirmPassword" required></p>
         <button type="submit">Register</button>
+        <a href="/login">Login</a>
       </form>
-      <a href="/login">Login</a>
+    </div>
     </main>
     <footer>
-      
+      <div class="left">
+        powered by <a href="aniketdvd.github.io/web-ams">Webams</a>
+      </div>
+      <div class="right">
+        WebAMS <%=version%>
+      </div>
     </footer>
   </body>
 </html>

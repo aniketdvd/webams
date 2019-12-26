@@ -7,3 +7,8 @@
    font-family: worksansbold;
    src: url('/static/fonts/WorkSans-Bold.ttf');
 }
+:root{
+  --accent-light:#98b197;
+  --accent-dark:#464646;
+  --shadow-std:0px 3px 12px rgba(0, 0, 0, 0.3);
+}
