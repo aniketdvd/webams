@@ -2,7 +2,6 @@ nav {
     padding-top: 30px;
     padding-bottom: 30px;
     color: #fff;
-    
 }
 .logo{
     font-weight: 700;
@@ -14,9 +13,14 @@ nav {
 .right{
     float: right;
 }
-.right a {
-    margin-left: 12px;
+.right a, .right button {
+    margin-left: 20px;
     color: #fff;
 }
-
-
+nav form {
+    height: 0;
+    width: 100%;
+}
+nav form button{
+    margin-top: 0;
+}
