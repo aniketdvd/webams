@@ -12,6 +12,13 @@ input {
     margin-bottom: 18px;
     border-bottom: 1px solid #3c3c3c;
 }
+blockquote{
+    background-color:#dddddd;
+    padding: 18px;
+    float: left;
+    margin-bottom: 50px;
+    border-left:3px solid var(--accent-dark);
+}
 .action-card{
 background-color: #fff;
 margin-bottom: 21px;
