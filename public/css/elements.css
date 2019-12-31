@@ -62,3 +62,27 @@ box-shadow: var(--shadow-std);
 .action-card--subtitle{
     color: var(--accent-dark);
 }
+textarea{
+    border: 1px solid black;
+    padding: 0px;
+    overflow: hidden;
+    resize: none;
+    height: 200px;
+    color: var(--accent-dark);
+}
+textarea[placeholder]{
+    padding-top: 18px;
+    padding-left: 12px;
+}
+.container input[type="text"] {
+    border: 1px solid black;
+    padding:12px;
+    padding-right: 180px;
+    color: var(--accent-dark);
+}
+.container select{
+    border: 1px solid black;
+    padding: 12px;
+    padding-right: 250px;
+    color: var(--accent-dark);
+}
