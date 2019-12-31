@@ -15,7 +15,6 @@ const path = require('path');
 const userFunctions = require('./db-conf/userFunctions');
 const clientTicketActions = require('./ticket-actions/ClientTicketActions');
 // const supportTicketActions = require('./ticket-actions/SupportTicketActions');
-const Ticket = require('./ticket-actions/Ticket');
 const connection = require('./db-conf/connect');
 const query = require('./db-conf/queries.json');
 const webamsVersion = require('./package.json').version;
@@ -30,6 +29,7 @@ initializePassport(
 );
 
 let users = new Object;
+
 let refreshUserList = () => {
     connection.query(query.sqlGetUser, function(err, result) {
         if(err) {
@@ -39,6 +39,24 @@ let refreshUserList = () => {
         console.log("::Updated users list::\n");
     });
 }
+
+let reportingDate = () => {
+    let da = new Date();
+    /* Custom Date Formatting */
+    return da.getDate() + '-' + da.getMonth() + '-' + da.getFullYear();
+}
+
+let reportingTime = () => {
+    let ti = new Date();
+    /* Custom Time formatting */
+    return ti.getHours() + ':' + ti.getMinutes();
+}
+
+let id = () => {
+    return Date.now().toString();
+}
+
+
 refreshUserList();
 
 app.set('view-engine', 'ejs');
@@ -77,22 +95,17 @@ app.get('/report', checkAuthenticated, (req, res) => {
 
 app.post('/newticket', checkAuthenticated, (req, res) => {
     try {
-        let ticket = new Ticket(
-            Ticket.id(),
-            req.user.email, 
-            req.user.name, 
-            req.body.ticketTitle,
-            req.body.tickerDesciption,
-            Ticket.reportingDate(),
-            Ticket.reportingTime(),
+        clientTicketActions.pushTicket(
+            id(),
+            req.user.id,
+            req.body.title,
+            req.body.description,
+            reportingDate(),
+            reportingTime(),
             req.body.priority,
-            req.body.status
-        )
-        
-        clientTicketActions.pushTicket(ticket.ticketDat()); // --incomplete
-
-        /* push ticket through query -- 'client-ticket-actions.js' */
-
+            'reported'
+        );
+        res.redirect('/');
     } catch (err) {
         console.warn(err);
         res.redirect('/report');
