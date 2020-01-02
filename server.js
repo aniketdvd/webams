@@ -78,7 +78,7 @@ app.get('/', checkAuthenticated, (req, res) => {
             version: webamsVersion
         });
     } else if (req.user.role === "dev") {
-        res.render('IndexDev.js', { 
+        res.render('IndexDev.ejs', { 
             name: req.user.name,
             version: webamsVersion
         });
