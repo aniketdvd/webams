@@ -29,8 +29,8 @@
         <form method="POST" action="/newticket">
             <h1>Report an Incident</h1>
             <p class="separator">Generate a ticket for new incident</p>
-            <p><input type="text" placeholder="title" name="title"> </p>
-            <p><textarea name="description" placeholder="Description-be as brief as possible" rows=5 cols="45"></textarea></p>
+            <p><input type="text" placeholder="title" name="title" maxlength="99"> </p>
+            <p><textarea name="description" placeholder="Description-be as brief as possible" rows=5 cols="45" maxlength="999"></textarea></p>
             <p>
                 <select name="priority">
                     <option>Priority</option>
