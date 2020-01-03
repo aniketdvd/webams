@@ -77,7 +77,7 @@ textarea[placeholder]{
 .container input[type="text"] {
     border: 1px solid black;
     padding:12px;
-    padding-right: 180px;
+    width: 352px;
     color: var(--accent-dark);
 }
 .container select{
