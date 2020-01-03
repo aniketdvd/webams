@@ -2,9 +2,22 @@ button {
     margin-top: 32px;
     margin-right: 18px;
     box-shadow: var(--shadow-std);
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
-input {
+.container{
+    background: #fff;
+    margin-top: 35px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    padding-right: 60px;
+    padding-left: 60px;
+    border-radius: 3pt;
+    height: max-content;
+    float:left;
+    width: calc(100% - 140px);
+    box-shadow: var(--shadow-std);
+}
+input, select {
     outline: none;
     margin-top: 12px;
     padding-bottom: 8px;
@@ -16,7 +29,7 @@ blockquote{
     background-color:#dddddd;
     padding: 18px;
     float: left;
-    margin-bottom: 50px;
+    margin-bottom: 15px;
     border-left:3px solid var(--accent-dark);
 }
 .action-card{
@@ -47,5 +60,29 @@ box-shadow: var(--shadow-std);
     font-weight: 900;
 }
 .action-card--subtitle{
+    color: var(--accent-dark);
+}
+textarea{
+    border: 1px solid black;
+    padding: 0px;
+    overflow: hidden;
+    resize: none;
+    height: 200px;
+    color: var(--accent-dark);
+}
+textarea[placeholder]{
+    padding-top: 18px;
+    padding-left: 12px;
+}
+.container input[type="text"] {
+    border: 1px solid black;
+    padding:12px;
+    padding-right: 180px;
+    color: var(--accent-dark);
+}
+.container select{
+    border: 1px solid black;
+    padding: 12px;
+    padding-right: 250px;
     color: var(--accent-dark);
 }
