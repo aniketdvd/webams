@@ -21,5 +21,18 @@
        outline: none;
    }
    .login-form a, .register-form a{
-       color:#000;
+       color:var(--accent-dark);
+   }
+   .register-form{
+    background: #fff;
+    margin-top: 35px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    padding-right: 60px;
+    padding-left: 60px;
+    border-radius: 3pt;
+    height: max-content;
+    float:left;
+    width: calc(100% - 140px);
+    box-shadow: var(--shadow-std);
    }

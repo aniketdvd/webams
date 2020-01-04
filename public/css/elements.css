@@ -4,19 +4,6 @@ button {
     box-shadow: var(--shadow-std);
     margin-bottom: 30px;
 }
-.container{
-    background: #fff;
-    margin-top: 35px;
-    padding-bottom: 30px;
-    padding-top: 30px;
-    padding-right: 60px;
-    padding-left: 60px;
-    border-radius: 3pt;
-    height: max-content;
-    float:left;
-    width: calc(100% - 140px);
-    box-shadow: var(--shadow-std);
-}
 input, select {
     outline: none;
     margin-top: 12px;
@@ -32,15 +19,27 @@ blockquote{
     margin-bottom: 15px;
     border-left:3px solid var(--accent-dark);
 }
+textarea{
+    border: 1px solid black;
+    padding: 0px;
+    overflow: hidden;
+    resize: none;
+    height: 200px;
+    color: var(--accent-dark);
+}
+textarea[placeholder]{
+    padding-top: 18px;
+    padding-left: 12px;
+}
 .action-card{
-background-color: #fff;
-margin-bottom: 21px;
-padding:20px;
-cursor: pointer;
-width:400px;
-height:60px;
-border-radius: 3pt;
-box-shadow: var(--shadow-std);
+    background-color: #fff;
+    margin-bottom: 21px;
+    padding:20px;
+    cursor: pointer;
+    width:400px;
+    height:60px;
+    border-radius: 3pt;
+    box-shadow: var(--shadow-std);
 }
 .action-card--icon{
     float: left;
@@ -62,17 +61,18 @@ box-shadow: var(--shadow-std);
 .action-card--subtitle{
     color: var(--accent-dark);
 }
-textarea{
-    border: 1px solid black;
-    padding: 0px;
-    overflow: hidden;
-    resize: none;
-    height: 200px;
-    color: var(--accent-dark);
-}
-textarea[placeholder]{
-    padding-top: 18px;
-    padding-left: 12px;
+.container{
+    background: #fff;
+    margin-top: 35px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    padding-right: 60px;
+    padding-left: 60px;
+    border-radius: 3pt;
+    height: max-content;
+    float:left;
+    width: calc(100% - 140px);
+    box-shadow: var(--shadow-std);
 }
 .container input[type="text"] {
     border: 1px solid black;
