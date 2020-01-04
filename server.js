@@ -30,6 +30,8 @@ initializePassport(
 
 let users = new Object;
 
+let tickets = new Object;
+
 let refreshUserList = () => {
     connection.query(query.sqlGetUser, function(err, result) {
         if(err) {
@@ -38,6 +40,16 @@ let refreshUserList = () => {
         users = result;
         console.log("::Updated users list::\n");
     });
+}
+
+let refreshTicketList = () => {
+    connection.query(query.sqlGetTicketByUser, function (err, result) {
+        if (err) {
+            throw console.warn(err);
+        }
+        tickets = result;
+        console.log("::Refreshed user ticket list::");
+    })
 }
 
 let reportingDate = () => {
