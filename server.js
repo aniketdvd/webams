@@ -43,7 +43,7 @@ let refreshUserList = () => {
 }
 
 let refreshTicketList = () => {
-    connection.query(query.sqlGetTicketByUser, function (err, result) {
+    connection.query(query.sqlGetTicketByUser, req.user.id, function (err, result) {
         if (err) {
             throw console.warn(err);
         }
