@@ -21,7 +21,7 @@
        outline: none;
    }
    .login-form a, .register-form a{
-       color:#000;
+       color:var(--accent-dark);
    }
    .register-form{
     background: #fff;
