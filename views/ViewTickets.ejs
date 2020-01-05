@@ -29,7 +29,11 @@
         <div class="container">
        <h1>Previous Incidents</h1>
         <p class="separator">View statuses of previously reported incidents.</p>
-
+        <% if(tickets == '') { %>
+          <h3>You have not reported any incidents yet.</h3>
+        <% } else { %>
+          
+        <% } %>
         </div>
     </main>
     <footer>
