@@ -42,13 +42,14 @@ let refreshUserList = () => {
     });
 }
 
-let refreshTicketList = () => {
-    connection.query(query.sqlGetTicketByUser, req.user.id, function (err, result) {
+let refreshTicketList = (userid) => {
+    connection.query(query.sqlGetTicketByUser, userid, function (err, result) {
         if (err) {
             throw console.warn(err);
         }
         tickets = result;
         console.log("::Refreshed user ticket list::");
+        console.log(tickets);
     })
 }
 
@@ -85,6 +86,7 @@ app.use(methodOverride('_method'));
 
 app.get('/', checkAuthenticated, (req, res) => {
     if (req.user.role === "client") {
+        refreshTicketList(req.user.id);
         res.render('Index.ejs', { 
             name: req.user.name,
             version: webamsVersion
