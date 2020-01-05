@@ -55,7 +55,7 @@ let refreshUserTicketList = (userid) => {
 let reportingDate = () => {
     let da = new Date();
     /* Custom Date Formatting */
-    return da.getDate() + '-' + da.getMonth() + '-' + da.getFullYear();
+    return da.getDate() + '-' + (da.getMonth()+1) + '-' + da.getFullYear();
 }
 
 let reportingTime = () => {
