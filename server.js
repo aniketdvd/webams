@@ -30,7 +30,7 @@ initializePassport(
 
 let users = new Object;
 
-let tickets = new Object;
+let userTickets = new Object;
 
 let refreshUserList = () => {
     connection.query(query.sqlGetUser, function(err, result) {
@@ -42,14 +42,13 @@ let refreshUserList = () => {
     });
 }
 
-let refreshTicketList = (userid) => {
+let refreshUserTicketList = (userid) => {
     connection.query(query.sqlGetTicketByUser, userid, function (err, result) {
         if (err) {
             throw console.warn(err);
         }
-        tickets = result;
+        userTickets = result;
         console.log("::Refreshed user ticket list::");
-        console.log(tickets);
     })
 }
 
@@ -86,7 +85,7 @@ app.use(methodOverride('_method'));
 
 app.get('/', checkAuthenticated, (req, res) => {
     if (req.user.role === "client") {
-        refreshTicketList(req.user.id);
+        refreshUserTicketList(req.user.id);
         res.render('Index.ejs', { 
             name: req.user.name,
             version: webamsVersion
@@ -131,7 +130,8 @@ app.post('/history', checkAuthenticated, (req, res) => {
         res.render('ViewTickets.ejs', {
             name: req.user.name,
             email: req.user.email,
-            version: webamsVersion
+            version: webamsVersion,
+            tickets: userTickets
         });
     }
 })
