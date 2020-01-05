@@ -32,7 +32,28 @@
         <% if(tickets == '') { %>
           <h3>You have not reported any incidents yet.</h3>
         <% } else { %>
-          
+          <% for(var i = 0; i < tickets.length; ++i ) {%>
+          <div class="ticket">
+            <span class="ticket-title">
+              <%=tickets[i].title%>
+            </span>
+            <span class="ticket-description">
+              <%=tickets[i].description%>
+            </span>
+            <span class="ticket-date">
+              <%=tickets[i].date%>
+            </span>
+            <span class="ticket-time">
+              <%=tickets[i].time%>
+            </span>
+            <span class="ticket-priority">
+              <%=tickets[i].priority%>
+            </span>
+            <span class="ticket-status">
+              <%=tickets[i].status%>
+            </span>
+          </div>
+          <% } %>
         <% } %>
         </div>
     </main>
