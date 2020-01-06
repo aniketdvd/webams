@@ -1,6 +1,88 @@
 button {  
     margin-top: 32px;
     margin-right: 18px;
-    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.3);
-    margin-bottom: 60px;
+    box-shadow: var(--shadow-std);
+    margin-bottom: 30px;
+}
+input, select {
+    outline: none;
+    margin-top: 12px;
+    padding-bottom: 8px;
+    border: 0;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #3c3c3c;
+}
+blockquote{
+    background-color:#dddddd;
+    padding: 18px;
+    float: left;
+    margin-bottom: 15px;
+    border-left:3px solid var(--accent-dark);
+}
+textarea{
+    border: 1px solid black;
+    padding: 0px;
+    overflow: hidden;
+    resize: none;
+    height: 200px;
+    color: var(--accent-dark);
+}
+textarea[placeholder]{
+    padding-top: 18px;
+    padding-left: 12px;
+}
+.action-card{
+    background-color: #fff;
+    margin-bottom: 21px;
+    padding:20px;
+    cursor: pointer;
+    width:400px;
+    height:60px;
+    border-radius: 3pt;
+    box-shadow: var(--shadow-std);
+}
+.action-card--icon{
+    float: left;
+    height: 63px;
+    width: 63px;
+    margin-right: 20px;
+    border-radius: 100pt;
+   
+}
+.action-card--icon img {
+    margin:10px;
+    height:50px;
+    width:50px;
+}
+.action-card--title{
+    color: var(--accent-dark);
+    font-weight: 900;
+}
+.action-card--subtitle{
+    color: var(--accent-dark);
+}
+.container{
+    background: #fff;
+    margin-top: 35px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    padding-right: 60px;
+    padding-left: 60px;
+    border-radius: 3pt;
+    height: max-content;
+    float:left;
+    width: calc(100% - 140px);
+    box-shadow: var(--shadow-std);
+}
+.container input[type="text"] {
+    border: 1px solid black;
+    padding:12px;
+    width: 352px;
+    color: var(--accent-dark);
+}
+.container select{
+    border: 1px solid black;
+    padding: 12px;
+    padding-right: 250px;
+    color: var(--accent-dark);
 }

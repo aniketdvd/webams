@@ -1,4 +1,11 @@
 {
     "sqlGetUser": "SELECT * FROM customers",
-    "sqlPushUser": "INSERT INTO customers (id, email, name, password, role) VALUES ?"
+    "sqlDeleteUser": "DELETE FROM customers WHERE email = ?",
+    "sqlPushUser": "INSERT INTO customers (id, email, name, password, role) VALUES ?",
+    "sqlPushTicket": "INSERT INTO `tickets` (`ticketid`, `reportingid`, `title`, `description`, `date`, `time`, `priority`, `status`) VALUES ?",
+    "sqlUpdateTicket": "",
+    "sqlGetTicketByUser": "SELECT * FROM tickets WHERE reportingid = ?",
+    "sqlGetUnresolvedTickets": "",
+    "sqlGetResolvedTickets": ""
+    
 }

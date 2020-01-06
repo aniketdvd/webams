@@ -3,14 +3,18 @@
     padding: 0;
     font-family: worksans;
 }
+header{
+  padding-top: 60px;
+  padding-bottom: 60px;
+  color: #fff;
+  font-size: 20px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
 body{
-  background-color: #98b197;
+  background-color: var(--accent-light);
 }
-:root {
- 
-}
-nav, header, main, footer{
- 
+
+nav, header, main{
   padding-left: 140px;
   padding-right: 140px;
 }
@@ -22,14 +26,11 @@ button {
     border:0;
     border-radius:2pt;
     box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.3);
-    background-color: #55644d;
+    background-color: var(--accent-dark);
     color: #fff;
   }
   a{
     text-decoration: none;
   
-  }
-  form {
-     background-color: #fff;
   }
   

@@ -1,16 +1,16 @@
 const connection = require('./../db-conf/connect');
+const query = require('./../db-conf/queries.json');
 
-let pushTicket = (clientEmail, clientName, title, description, date, time, priority, status) => {
+let pushTicket = (ticketid, reportingid, title, description, date, time, priority, status) => {
     let ticket = [
-        [clientEmail, clientName, title, description, date, time, priority, status]
+        [ticketid, reportingid, title, description, date, time, priority, status]
     ];
-    const sqlPushTicket = " "; /* Add query */
-    connection.query(sqlPushTicket, [ticket], (err, result) => {
+    connection.query(query.sqlPushTicket, [ticket], (err, result) => {
         if(err) {
             throw console.warn(err);
         }
-        console.log("::Ticket was reported successfully::");
-    })
+        console.log("One ticket generated at " + date + " " + time);
+    });
 }
 
 module.exports = {

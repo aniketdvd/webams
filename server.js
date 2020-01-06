@@ -15,7 +15,6 @@ const favicon = require('serve-favicon');
 const userFunctions = require('./db-conf/userFunctions');
 const clientTicketActions = require('./ticket-actions/ClientTicketActions');
 // const supportTicketActions = require('./ticket-actions/SupportTicketActions');
-const Ticket = require('./ticket-actions/Ticket');
 const connection = require('./db-conf/connect');
 const query = require('./db-conf/queries.json');
 const webamsVersion = require('./package.json').version;
@@ -68,6 +67,9 @@ app.use(passport.session());
 app.use(methodOverride('_method'));
 
 let users = new Object;
+
+let userTickets = new Object;
+
 let refreshUserList = () => {
     connection.query(query.sqlGetUser, function(err, result) {
         if(err) {
@@ -77,15 +79,60 @@ let refreshUserList = () => {
         console.log("::Updated users list::\n");
     });
 }
+<<<<<<< HEAD
+=======
+
+let refreshUserTicketList = (userid) => {
+    connection.query(query.sqlGetTicketByUser, userid, function (err, result) {
+        if (err) {
+            throw console.warn(err);
+        }
+        userTickets = result;
+        console.log("::Refreshed user ticket list::");
+    })
+}
+
+let reportingDate = () => {
+    let da = new Date();
+    /* Custom Date Formatting */
+    return da.getDate() + '-' + (da.getMonth()+1) + '-' + da.getFullYear();
+}
+
+let reportingTime = () => {
+    let ti = new Date();
+    /* Custom Time formatting */
+    return ti.getHours() + ':' + ti.getMinutes();
+}
+
+let id = () => {
+    return Date.now().toString();
+}
+
+
+refreshUserList();
+
+app.set('view-engine', 'ejs');
+app.use(express.urlencoded({ extended: false }));
+app.use(flash());
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(methodOverride('_method'));
+>>>>>>> 9c496b39c102d5fe6478b5acff822973619d4ba4
 
 app.get('/dashboard', checkAuthenticated, (req, res) => {
     if (req.user.role === "client") {
+        refreshUserTicketList(req.user.id);
         res.render('Index.ejs', { 
             name: req.user.name,
             version: webamsVersion
         });
     } else if (req.user.role === "dev") {
-        res.render('IndexDev.js', { 
+        res.render('IndexDev.ejs', { 
             name: req.user.name,
             version: webamsVersion
         });
@@ -104,22 +151,17 @@ app.get('/report', checkAuthenticated, (req, res) => {
 
 app.post('/newticket', checkAuthenticated, (req, res) => {
     try {
-        let ticket = new Ticket(
-            Ticket.id(),
-            req.user.email, 
-            req.user.name, 
-            req.body.ticketTitle,
-            req.body.tickerDesciption,
-            Ticket.reportingDate(),
-            Ticket.reportingTime(),
+        clientTicketActions.pushTicket(
+            id(),
+            req.user.id,
+            req.body.title,
+            req.body.description,
+            reportingDate(),
+            reportingTime(),
             req.body.priority,
-            req.body.status
-        )
-        
-        ticket.pushTicket(ticket.ticketDat()); // --incomplete
-
-        /* push ticket through query -- 'client-ticket-actions.js' */
-
+            'reported'
+        );
+        res.redirect('/');
     } catch (err) {
         console.warn(err);
         res.redirect('/report');
@@ -131,8 +173,16 @@ app.post('/history', checkAuthenticated, (req, res) => {
         res.render('ViewTickets.ejs', {
             name: req.user.name,
             email: req.user.email,
-            version: webamsVersion
+            version: webamsVersion,
+            tickets: userTickets
         });
+    } else {
+        res.render('AllTickets.ejs', {
+            name: req.user.name,
+            email: req.user.email,
+            version: webamsVersion
+            // tickets: userTickets
+        })
     }
 })
 
@@ -142,6 +192,17 @@ app.post('/feedback', checkAuthenticated, (req, res) => {
             name: req.user.name,
             email: req.user.email,
             version: webamsVersion
+        });
+    }
+})
+
+app.post('/issues', checkAuthenticated, (req, res) => {
+    if(req.user.role === "dev") {
+        res.render('ReviewTickets.ejs', {
+            name: req.user.name,
+            email: req.user.email,
+            version: webamsVersion
+            // tickets: allTickets
         });
     }
 })
