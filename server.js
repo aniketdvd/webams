@@ -146,6 +146,17 @@ app.post('/feedback', checkAuthenticated, (req, res) => {
     }
 })
 
+app.post('/issues', checkAuthenticated, (req, res) => {
+    if(req.user.role === 'dev') {
+        res.render('ReviewTicket.ejs', {
+            name: req.user.name,
+            email: req.user.email,
+            version: webamsVersion
+            // tickets: allTickets
+        });
+    }
+})
+
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('Login.ejs', {
         version: webamsVersion
