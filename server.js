@@ -79,8 +79,6 @@ let refreshUserList = () => {
         console.log("::Updated users list::\n");
     });
 }
-<<<<<<< HEAD
-=======
 
 let refreshUserTicketList = (userid) => {
     connection.query(query.sqlGetTicketByUser, userid, function (err, result) {
@@ -122,7 +120,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
->>>>>>> 9c496b39c102d5fe6478b5acff822973619d4ba4
 
 app.get('/dashboard', checkAuthenticated, (req, res) => {
     if (req.user.role === "client") {
