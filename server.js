@@ -133,6 +133,13 @@ app.post('/history', checkAuthenticated, (req, res) => {
             version: webamsVersion,
             tickets: userTickets
         });
+    } else {
+        res.render('AllTickets.ejs', {
+            name: req.user.name,
+            email: req.user.email,
+            version: webamsVersion
+            // tickets: userTickets
+        })
     }
 })
 
@@ -147,8 +154,8 @@ app.post('/feedback', checkAuthenticated, (req, res) => {
 })
 
 app.post('/issues', checkAuthenticated, (req, res) => {
-    if(req.user.role === 'dev') {
-        res.render('ReviewTicket.ejs', {
+    if(req.user.role === "dev") {
+        res.render('ReviewTickets.ejs', {
             name: req.user.name,
             email: req.user.email,
             version: webamsVersion

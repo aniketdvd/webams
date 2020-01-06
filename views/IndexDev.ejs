@@ -25,13 +25,14 @@
           <button type="submit">Log Out</button>
         </div>
       </div>
+      </form>
     </nav>
     <header>Welcome to your WebAMS dashboard, <%=name%>.
       <br>
       Here are a couple of things we can help you with.
     </header>
     <main>
-        <form action="/issues">
+        <form action="/issues" method="POST">
           <div class="action-card" onclick="javascript:this.parentNode.submit();">
             <div class="action-card--icon">
               <img src="/static/img/newticket.svg" alt="">
