@@ -125,7 +125,7 @@ app.post('/newticket', checkAuthenticated, (req, res) => {
     }
 })
 
-app.post('/history', checkAuthenticated && checkClientUserRole, (req, res) => {
+app.post('/history', checkAuthenticated, (req, res) => {
     if(req.user.role === "client") {
         res.render('ViewTickets.ejs', {
             name: req.user.name,
@@ -153,7 +153,7 @@ app.post('/feedback', checkAuthenticated && checkClientUserRole, (req, res) => {
     }
 })
 
-app.post('/issues', checkAuthenticated, (req, res) => {
+app.post('/issues', checkAuthenticated && checkSupportUserRole, (req, res) => {
     if(req.user.role === "dev") {
         res.render('ReviewTickets.ejs', {
             name: req.user.name,
