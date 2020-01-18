@@ -32,6 +32,11 @@ app.use(flash());
 
 let installationStatus = () => {
     if(fs.existsSync('.env')) {
+        initializePassport(
+            passport,
+            email => users.find(user => user.email === email),
+            id => users.find(user => user.id === id)
+        );
         return true;
     } else {
         console.error('WebAMS is not installed or configured!');
@@ -50,11 +55,6 @@ app.get('/install', (req, res) => {
 
 app.get('/', (req, res) => {
     if(installationStatus() === true) {
-        initializePassport(
-            passport,
-            email => users.find(user => user.email === email),
-            id => users.find(user => user.id === id)
-        );
         refreshUserList();
         res.redirect('/dashboard');
     } else {
@@ -105,21 +105,6 @@ let reportingTime = () => {
 let id = () => {
     return Date.now().toString();
 }
-
-
-refreshUserList();
-
-app.set('view-engine', 'ejs');
-app.use(express.urlencoded({ extended: false }));
-app.use(flash());
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(methodOverride('_method'));
 
 app.get('/dashboard', checkAuthenticated, (req, res) => {
     if (req.user.role === "client") {
