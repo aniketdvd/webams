@@ -183,7 +183,7 @@ app.post('/history', checkAuthenticated, (req, res) => {
     }
 })
 
-app.post('/feedback', checkAuthenticated, (req, res) => {
+app.post('/feedback', checkAuthenticated && checkClientUserRole, (req, res) => {
     if(req.user.role === "client") {
         res.render('Feedback.ejs', {
             name: req.user.name,
@@ -193,7 +193,7 @@ app.post('/feedback', checkAuthenticated, (req, res) => {
     }
 })
 
-app.post('/issues', checkAuthenticated, (req, res) => {
+app.post('/issues', checkAuthenticated && checkSupportUserRole, (req, res) => {
     if(req.user.role === "dev") {
         res.render('ReviewTickets.ejs', {
             name: req.user.name,
@@ -254,6 +254,20 @@ app.use((req, res) => {
         return;
     }
 })
+
+function checkClientUserRole(req, res, next) {
+    if(req.user.role === 'client') {
+        return next();
+    }
+    res.redirect('/lost');
+}
+
+function checkSupportUserRole(req, res, next) {
+    if(req.user.role === 'dev') {
+        return next();
+    }
+    res.redirect('/404');
+}
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {

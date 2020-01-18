@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/static/css/elements.css">
     <title>WebAMS registration</title>
   </head>
-  <body>
+  <body onload="haha()">
     <nav>
       <div class="left">
         <span class="logo">WebAMS</span>
@@ -26,7 +26,7 @@
     </nav>
     <main>
       <div class="register-form">
-      <form action="/register" method="POST">
+      <form action="/register" method="POST" onsubmit= "return checkpassword(this)">
         <h1 class="heading">Register</h1>
            <p> <input type="text" id="name" placeholder="Name" name="name" required></p>
            <p><input type="email" id="email" placeholder="email" name="email" required></p>
@@ -50,4 +50,5 @@
       </div>
     </footer>
   </body>
+    <script src="/static/js/validateInput.js"></script>
 </html>
