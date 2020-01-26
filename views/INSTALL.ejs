@@ -28,26 +28,26 @@
 
     </header>
     <main>
-        <form action="/">
+        <form action="/init" method="POST">
             <div>
                 <label for="dbhost">Database host:</label>
-                <input type="url" required>
+                <input type="text" name="dbhost" required>
             </div>
             <div>
                 <label for="dbport">Port: </label>
-                <input type="number" required>
+                <input type="number" name="dbport" disabled>
             </div>
             <div>
                 <label for="dbuser">Database username: </label>
-                <input type="text" required>
+                <input type="text" name="dbuser"required>
             </div>
             <div>
-                <label for="dbuser">Database name: </label>
-                <input type="text" required>
+                <label for="dbname">Database name: </label>
+                <input type="text" name="dbname" required>
             </div>
             <div>
                 <label for="dbpassword">Databse passsword: </label>
-                <input type="password">
+                <input type="password" name="dbpass">
             </div>
             <button type="submit">
                 Install WebAMS

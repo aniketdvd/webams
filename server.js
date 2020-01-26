@@ -18,6 +18,7 @@ const clientTicketActions = require('./ticket-actions/ClientTicketActions');
 const connection = require('./db-conf/connect');
 const query = require('./db-conf/queries.json');
 const webamsVersion = require('./package.json').version;
+const installer = require('./INSTALL/INSTALL');
 //serves the favicon
 app.use(favicon(path.join(__dirname, 'public', 'webams.svg')));
 app.use('/static', express.static(path.join(__dirname, 'public')));
@@ -59,6 +60,25 @@ app.get('/', (req, res) => {
         res.redirect('/dashboard');
     } else {
         res.redirect('/install');
+    }
+})
+
+app.post('/init', (req, res) => {
+    installer.initInstall(
+        req.body.dbhost,
+        req.body.dbuser,
+        req.body.dbpass,
+        req.body.dbname
+    );
+    try {
+        setTimeout(
+            res.send('installing webams...'),
+            2000
+        );
+        connection.query('select \'done\'', res.redirect('/'));
+    } catch (err) {
+        res.send('Installation Failed!')
+        console.log('failed install');
     }
 })
 

@@ -4,7 +4,9 @@
   "description": "ticketing tool web app",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "pm2 start server.js && pm2 monit 0",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stop": "pm2 stop"
   },
   "repository": {
     "type": "git",
@@ -35,6 +37,7 @@
     "mysql": "^2.17.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "pm2": "^4.2.3",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
