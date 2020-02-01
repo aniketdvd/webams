@@ -41,6 +41,19 @@ textarea[placeholder]{
     border-radius: 3pt;
     box-shadow: var(--shadow-std);
 }
+.action-card--disabled{
+    background-color: #ddd;
+    margin-bottom: 21px;
+    padding:20px;
+    cursor: pointer;
+    width:400px;
+    height:60px;
+    border-radius: 3pt;
+    /*box-shadow: var(--shadow-std);*/
+}
+.action-card--disabled:hover{
+cursor: not-allowed;
+}
 .action-card--icon{
     float: left;
     height: 63px;
