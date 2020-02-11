@@ -41,6 +41,19 @@ textarea[placeholder]{
     border-radius: 3pt;
     box-shadow: var(--shadow-std);
 }
+.action-card--disabled{
+    background-color: #ddd;
+    margin-bottom: 21px;
+    padding:20px;
+    cursor: pointer;
+    width:400px;
+    height:60px;
+    border-radius: 3pt;
+    /*box-shadow: var(--shadow-std);*/
+}
+.action-card--disabled:hover{
+cursor: not-allowed;
+}
 .action-card--icon{
     float: left;
     height: 63px;
@@ -85,4 +98,11 @@ textarea[placeholder]{
     padding: 12px;
     padding-right: 250px;
     color: var(--accent-dark);
+}
+hr{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border: 0.5px solid #dddddd;
 }
