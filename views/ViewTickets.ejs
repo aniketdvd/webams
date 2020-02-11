@@ -35,12 +35,16 @@
         <% } else { %>
           <% for(var i = 0; i < tickets.length; ++i ) {%>
           <div class="ticket">
-            <span class="ticket-title">
-              <%=tickets[i].title%>
-            </span>
-            <span class="ticket-description">
-              <%=tickets[i].description%>
-            </span>
+            <details>
+              <summary>
+                <span class="ticket-title">
+                  <%=tickets[i].title%>
+                </span>
+              </summary>
+              <span class="ticket-description">
+                <%=tickets[i].description%>
+              </span>
+            </details>
             <span class="ticket-date">
               <%=tickets[i].date%>
             </span>
@@ -54,6 +58,7 @@
               <%=tickets[i].status%>
             </span>
           </div>
+          <hr/>
           <% } %>
         <% } %>
         </div>
