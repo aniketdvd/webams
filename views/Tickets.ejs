@@ -28,39 +28,24 @@
       </nav>
     <main>
       <div class="container">
-        <h1>See the tickets and active issues</h1>
-          <p class="separator">Work on the issues on the way to fix</p>
-          <!-- <% if(tickets == '') { %>
-            <h3>No incidents available</h3>
-          <% } else { %>
-            <% for(var i = 0; i < tickets.length; ++i ) {%>
-            <div class="ticket">
-              <details>
-                <summary>
-                  <span class="ticket-title">
-                    <%=tickets[i].title%>
-                  </span>
-                </summary>
-                <span class="ticket-description">
-                  <%=tickets[i].description%>
-                </span>
-              </details>
-              <span class="ticket-date">
-                <%=tickets[i].date%>
-              </span>
-              <span class="ticket-time">
-                <%=tickets[i].time%>
-              </span>
-              <span class="ticket-priority">
-                <%=tickets[i].priority%>
-              </span>
-              <span class="ticket-status">
-                <%=tickets[i].status%>
-              </span>
-            </div>
-            <hr/>
-            <% } %>
-          <% } %> -->
+        <h1>Reviewing Incident id:</h1>
+          <p class="separator">Issue:</p>
+          <select name="changeStatus">
+            <option>change status</option>
+            <option>Assigned</option>
+            <option>In progress</option>
+            <option>Won't fix</option>
+            <option>Resolved</option>
+        </select>
+          <select name="changePriority">
+            <option>change priority</option>
+            <option>Low</option>
+            <option>Normal</option>
+            <option>Important</option>
+            <option>Critical</option>
+            <option>Extreme</option>
+        </select>
+        <button type="submit">Update Incident</button>
       </div>
     </main>
     <footer>
