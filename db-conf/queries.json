@@ -5,7 +5,7 @@
     "sqlPushTicket": "INSERT INTO `tickets` (`ticketid`, `reportingid`, `title`, `description`, `date`, `time`, `priority`, `status`) VALUES ?",
     "sqlUpdateTicket": "",
     "sqlGetTicketByUser": "SELECT * FROM tickets WHERE reportingid = ?",
-    "sqlGetUnresolvedTickets": "SELECT * FROM `tickets` WHERE STATUS!=fixed",
+    "sqlGetUnresolvedTickets": "SELECT * FROM `tickets` WHERE STATUS!='fixed'",
     "sqlGetResolvedTickets": ""
     
 }
