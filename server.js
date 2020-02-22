@@ -139,6 +139,7 @@ app.post('/newticket', checkAuthenticated, (req, res) => {
             req.body.priority,
             'reported'
         );
+        refreshUnresolvedTicketList();
         res.redirect('/');
     } catch (err) {
         console.warn(err);
@@ -175,8 +176,8 @@ app.post('/feedback', checkAuthenticated && checkClientUserRole, (req, res) => {
 })
 
 app.post('/issues', checkAuthenticated && checkSupportUserRole, (req, res) => {
+    refreshUnresolvedTicketList();
     if(req.user.role === "dev") {
-        refreshUnresolvedTicketList();
         res.render('ReviewTickets.ejs', {
             name: req.user.name,
             email: req.user.email,
