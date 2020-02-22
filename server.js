@@ -57,10 +57,20 @@ let refreshUnresolvedTicketList = (userid) => {
         if (err) {
             throw console.warn(err);
         }
-        userTickets = result;
+        allTickets = result;
         console.log("::Refreshed all tickets list::");
     })
 }
+
+// let refreshResolvedTicketList = (userid) => {
+//     connection.query(query.sqlGetResolvedTickets, function (err, result) {
+//         if (err) {
+//             throw console.warn(err);
+//         }
+//         resolvedTickets = result;
+//         console.log("::Refreshed all tickets list::");
+//     })
+// }
 
 let reportingDate = () => {
     let da = new Date();
@@ -79,6 +89,7 @@ let id = () => {
 }
 
 refreshUnresolvedTicketList();
+// refreshResolvedTicketList();
 refreshUserList();
 
 app.set('view-engine', 'ejs');
@@ -144,11 +155,11 @@ app.post('/history', checkAuthenticated, (req, res) => {
             tickets: userTickets
         });
     } else {
-        res.render('AllTickets.ejs', {
+        res.render('ResolvedTickets.ejs', {
             name: req.user.name,
             email: req.user.email,
-            version: webamsVersion
-            // tickets: userTickets
+            version: webamsVersion,
+            tickets: resolvedTickets
         })
     }
 })
@@ -170,8 +181,7 @@ app.post('/issues', checkAuthenticated && checkSupportUserRole, (req, res) => {
             name: req.user.name,
             email: req.user.email,
             version: webamsVersion,
-            tickets: userTickets
-            // tickets: allTickets
+            tickets: allTickets
         });
     }
 })
