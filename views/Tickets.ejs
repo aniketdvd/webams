@@ -1,8 +1,11 @@
 <html lang="en">
 <head>
+    <%- include partials/Meta.ejs %>
+    <%- include partials/LinkResources.ejs %>
     <title>Review tickets</title>
 </head>
 <body>
+    <%- include partials/NavLoggedIn.ejs %>
     <main>
       <div class="container">
         <h1>Reviewing Incident id:</h1>
@@ -25,13 +28,6 @@
         <button type="submit">Update Incident</button>
       </div>
     </main>
-    <footer>
-        <div class="left">
-          powered by <a href="aniketdvd.github.io/web-ams">Webams</a>
-        </div>
-        <div class="right">
-          WebAMS <%=version%>
-        </div>
-      </footer>
+    <%- include partials/Footer.ejs %>
 </body>
 </html>
