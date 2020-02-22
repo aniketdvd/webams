@@ -52,6 +52,16 @@ let refreshUserTicketList = (userid) => {
     })
 }
 
+let refreshUnresolvedTicketList = (userid) => {
+    connection.query(query.sqlGetUnresolvedTickets, function (err, result) {
+        if (err) {
+            throw console.warn(err);
+        }
+        userTickets = result;
+        console.log("::Refreshed all tickets list::");
+    })
+}
+
 let reportingDate = () => {
     let da = new Date();
     /* Custom Date Formatting */
@@ -68,7 +78,7 @@ let id = () => {
     return Date.now().toString();
 }
 
-
+refreshUnresolvedTicketList();
 refreshUserList();
 
 app.set('view-engine', 'ejs');
@@ -155,6 +165,7 @@ app.post('/feedback', checkAuthenticated && checkClientUserRole, (req, res) => {
 
 app.post('/issues', checkAuthenticated && checkSupportUserRole, (req, res) => {
     if(req.user.role === "dev") {
+        refreshUnresolvedTicketList();
         res.render('ReviewTickets.ejs', {
             name: req.user.name,
             email: req.user.email,
