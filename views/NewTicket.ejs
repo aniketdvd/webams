@@ -1,8 +1,11 @@
 <html lang="en">
 <head>
+    <%- include partials/Meta.ejs %>
+    <%- include partials/LinkResources.ejs %>
     <title>Generate a new ticket</title>
 </head>
 <body>
+    <%- include partials/NavLoggedIn.ejs %>
     <main>
       <div class="container">
         <form method="POST" action="/newticket">
@@ -25,6 +28,6 @@
         </form>
         </div>
     </main>
-    
+    <%- include partials/Footer.ejs %>
 </body>
 </html>

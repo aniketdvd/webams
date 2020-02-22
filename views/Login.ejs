@@ -1,24 +1,25 @@
 <html lang="en">
   <head>
+      <%- include partials/Meta.ejs %>
+      <%- include partials/LinkResources.ejs %>
     <title>WebAMS Login</title>
   </head>
   <body>
+      <%- include partials/NavLoggedOut.ejs %>
     <main> 
-     
       <% if (messages.error) { %> 
         <%= messages.error %> 
       <% } %> 
       <div class="login-form">
-      <form action="/login" method="POST" >
-       <h1 class="heading">Login</h1> 
-       <p><input type="email" id="email" name="email" required placeholder="Email Address"></p>   
-       <p><input type="password" id="password" name="password" required placeholder="password"> </p>
-       <button type="submit">Login</button> 
-       <a href="/register">or Create an Account</a> 
-      </form> 
+       <form action="/login" method="POST" >
+        <h1 class="heading">Login</h1> 
+        <p><input type="email" id="email" name="email" required placeholder="Email Address"></p>   
+        <p><input type="password" id="password" name="password" required placeholder="password"> </p>
+        <button type="submit">Login</button> 
+        <a href="/register">or Create an Account</a> 
+       </form> 
       </div>
     </main> 
-  
-   
+      <%- include partials/Footer.ejs %> 
   </body>
 </html>

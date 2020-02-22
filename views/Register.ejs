@@ -1,8 +1,11 @@
 <html lang="en">
   <head>
+      <%- include partials/Meta.ejs %>
+      <%- include partials/LinkResources.ejs %>
     <title>WebAMS registration</title>
   </head>
   <body onload="haha()">
+      <%- include partials/NavLoggedOut.ejs %>
     <main>
       <div class="register-form">
       <form action="/register" method="POST" onsubmit= "return checkpassword(this)">
@@ -20,7 +23,7 @@
       </blockquote>
     </div>
     </main>
-    
+    <%- include partials/Footer.ejs %>
   </body>
     <script src="/static/js/validateInput.js"></script>
 </html>

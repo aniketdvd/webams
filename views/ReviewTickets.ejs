@@ -1,8 +1,11 @@
 <html lang="en">
 <head>
+    <%- include partials/Meta.ejs %>
+    <%- include partials/LinkResources.ejs %>
     <title>Review tickets</title>
 </head>
 <body>
+    <%- include partials/NavLoggedIn.ejs %>
     <main>
       <div class="container">
         <h1>See the tickets and active issues</h1>
@@ -40,6 +43,6 @@
           <% } %> -->
       </div>
     </main>
-    
+    <%- include partials/Footer.ejs %>
 </body>
 </html>
