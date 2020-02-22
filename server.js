@@ -158,7 +158,8 @@ app.post('/issues', checkAuthenticated && checkSupportUserRole, (req, res) => {
         res.render('ReviewTickets.ejs', {
             name: req.user.name,
             email: req.user.email,
-            version: webamsVersion
+            version: webamsVersion,
+            tickets: userTickets
             // tickets: allTickets
         });
     }
