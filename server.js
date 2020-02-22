@@ -62,15 +62,15 @@ let refreshUnresolvedTicketList = (userid) => {
     })
 }
 
-// let refreshResolvedTicketList = (userid) => {
-//     connection.query(query.sqlGetResolvedTickets, function (err, result) {
-//         if (err) {
-//             throw console.warn(err);
-//         }
-//         resolvedTickets = result;
-//         console.log("::Refreshed all tickets list::");
-//     })
-// }
+let refreshResolvedTicketList = (userid) => {
+    connection.query(query.sqlGetResolvedTickets, function (err, result) {
+        if (err) {
+            throw console.warn(err);
+        }
+        resolvedTickets = result;
+        console.log("::Refreshed all tickets list::");
+    })
+}
 
 let reportingDate = () => {
     let da = new Date();
@@ -89,7 +89,7 @@ let id = () => {
 }
 
 refreshUnresolvedTicketList();
-// refreshResolvedTicketList();
+refreshResolvedTicketList();
 refreshUserList();
 
 app.set('view-engine', 'ejs');
