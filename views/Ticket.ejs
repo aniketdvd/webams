@@ -8,24 +8,40 @@
     <%- include partials/NavLoggedIn.ejs %>
     <main>
       <div class="container">
-        <h1>Reviewing Incident id:<%=tickets[eth].title%></h1>
-          <p class="separator">Issue:</p>
-          <select name="changeStatus">
-            <option>change status</option>
-            <option>Assigned</option>
-            <option>In progress</option>
-            <option>Won't fix</option>
-            <option>Resolved</option>
-        </select>
-          <select name="changePriority">
-            <option>change priority</option>
-            <option>Low</option>
-            <option>Normal</option>
-            <option>Important</option>
-            <option>Critical</option>
-            <option>Extreme</option>
-        </select>
-        <button type="submit">Update Incident</button>
+        <h1>Reviewing Incident id: <span class="light"><%=tickets[eth].ticketid%></span></h1>
+          <p class="separator">
+          <div class="review-left left">
+            <div>
+              <select name="changeStatus">
+                <option>change status</option>
+                <option>Assigned</option>
+                <option>In progress</option>
+                <option>Won't fix</option>
+                <option>Resolved</option>
+              </select>
+            </div>
+            <div>
+              <select name="changePriority">
+                <option>change priority</option>
+                <option>Low</option>
+                <option>Normal</option>
+                <option>Important</option>
+                <option>Critical</option>
+                <option>Extreme</option>
+              </select>
+            </div>
+            <button type="submit">Update Incident</button>
+            <a href="/">Cancel</a> 
+          </div>
+          <div class="review-right right">
+            <div>
+              <%=tickets[eth].description%>
+            </div>
+            <div>
+              <div>Reported on : <%=tickets[eth].date%></div>
+              <div>Reported at : <%=tickets[eth].time%></div>
+            </div>
+          </div>  
       </div>
     </main>
     <%- include partials/Footer.ejs %>

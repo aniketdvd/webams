@@ -133,3 +133,6 @@ hr{
     transition: ease-in;
     transition-duration: 0.2s;
 }
+.light {
+    font-weight: 100;
+}
