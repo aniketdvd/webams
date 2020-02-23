@@ -1,7 +1,9 @@
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
-  
+
+console.log("WEBAMS has started!\n");
+
 const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
