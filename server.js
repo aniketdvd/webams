@@ -218,6 +218,14 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
     }
 })
 
+// app.post('/ticket/:tid', checkAuthenticated && checkSupportUserRole, (req, res) => {
+//     res.render('Ticket.ejs', {
+//         /* 
+//             Ticket info
+//         */ 
+//     })
+// })
+
 app.delete('/logout', (req, res) => {
     req.logOut();
     res.redirect('/login');
