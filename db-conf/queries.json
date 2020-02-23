@@ -6,6 +6,6 @@
     "sqlUpdateTicket": "",
     "sqlGetTicketByUser": "SELECT * FROM tickets WHERE reportingid = ?",
     "sqlGetUnresolvedTickets": "SELECT * FROM `tickets` WHERE STATUS!='fixed'",
-    "sqlGetResolvedTickets": "SELECT * FROM `tickets` WHERE STATUS ='fixed'"
-    
+    "sqlGetResolvedTickets": "SELECT * FROM `tickets` WHERE STATUS ='fixed'",
+    "sqlGetTicket": "SELECT * FROM tickets WHERE ticketid = ?"
 }
