@@ -15,9 +15,8 @@
             <% } else { %>
               <% for(var i = 0; i < tickets.length; ++i ) {%>
                 <form action="/ticket?tid=<%=tickets[i].ticketid%>" method="POST">
-                <div class="ticket">
-                <span class="ticket-title">
-                  <%=tickets[i].title%>
+                <div class="ticket <%=tickets[i].priority%>">
+                <span class="ticket-title"><%=tickets[i].title%>
                 </span>
                 <span class="ticket-date">
                   <%=tickets[i].date%>
@@ -31,12 +30,10 @@
                 <span class="ticket-status">
                   <%=tickets[i].status%>
                 </span>
-                <button type="submit" class="right ticket-action-button">
-                  View Ticket
-                </button>
+                <input type="submit" class="right ticket-action-button" value="View Ticket">
               </div>
               </form>
-              <hr/>
+
               <% } %>
             <% } %>
         </div>
