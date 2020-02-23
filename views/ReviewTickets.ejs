@@ -7,37 +7,39 @@
 <body>
     <%- include partials/NavLoggedIn.ejs %>
     <main>
-      <div class="container">
-        <h1>See the tickets and active issues</h1>
-          <p class="separator">Work on the issues on the way to fix</p>
-          <% if(tickets == '') { %>
-            <h3>No incidents available</h3>
-          <% } else { %>
-            <% for(var i = 0; i < tickets.length; ++i ) {%>
-            <div class="ticket">
-              <span class="ticket-title">
-                <%=tickets[i].title%>
-              </span>
-              <span class="ticket-date">
-                <%=tickets[i].date%>
-              </span>
-              <span class="ticket-time">
-                <%=tickets[i].time%>
-              </span>
-              <span class="ticket-priority">
-                <%=tickets[i].priority%>
-              </span>
-              <span class="ticket-status">
-                <%=tickets[i].status%>
-              </span>
-              <a href="/ticket?incident=<%=tickets[i].ticketid%>" class="right ticket-action-button">
-                View Ticket
-              </a>
-            </div>
-            <hr/>
+        <div class="container">
+          <h1>See the tickets and active issues</h1>
+            <p class="separator">Work on the issues on the way to fix</p>
+            <% if(tickets == '') { %>
+              <h3>No incidents available</h3>
+            <% } else { %>
+              <% for(var i = 0; i < tickets.length; ++i ) {%>
+                <form action="/ticket?tid=<%=tickets[i].ticketid%>" method="POST">
+                <div class="ticket">
+                <span class="ticket-title">
+                  <%=tickets[i].title%>
+                </span>
+                <span class="ticket-date">
+                  <%=tickets[i].date%>
+                </span>
+                <span class="ticket-time">
+                  <%=tickets[i].time%>
+                </span>
+                <span class="ticket-priority">
+                  <%=tickets[i].priority%>
+                </span>
+                <span class="ticket-status">
+                  <%=tickets[i].status%>
+                </span>
+                <button type="submit" class="right ticket-action-button">
+                  View Ticket
+                </button>
+              </div>
+              </form>
+              <hr/>
+              <% } %>
             <% } %>
-          <% } %>
-      </div>
+        </div>
     </main>
     <%- include partials/Footer.ejs %>
 </body>

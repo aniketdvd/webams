@@ -34,6 +34,8 @@ let users = new Object;
 
 let userTickets = new Object;
 
+// let thisTicket = new Object;
+
 let refreshUserList = () => {
     connection.query(query.sqlGetUser, function(err, result) {
         if(err) {
@@ -73,6 +75,17 @@ let refreshResolvedTicketList = (userid) => {
         console.log("::Refreshed all tickets list::");
     })
 }
+
+// let getCurrentTicket = (tid, callback) => {
+//     connection.query(query.sqlGetTicket, tid, function(err, result) {
+//         if(err) {
+//             throw console.warn(err);
+//         }
+        
+//         return result;
+//     });
+// }
+
 
 let reportingDate = () => {
     let da = new Date();
@@ -189,6 +202,19 @@ app.post('/issues', checkAuthenticated && checkSupportUserRole, (req, res) => {
     }
 })
 
+app.post('/ticket', checkAuthenticated, (req, res) => {
+    if(req.user.role === "dev") {
+        let tid = req.query.tid;
+        var ticketIndex = allTickets.findIndex(p => p.ticketid == tid);
+        console.log("IIIIIIII: "+ticketIndex);
+        res.render('Ticket.ejs', {
+            version: webamsVersion,
+            tickets: allTickets,
+            eth: ticketIndex
+        });
+    }
+})
+
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('Login.ejs', {
         version: webamsVersion
@@ -217,14 +243,6 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
         res.redirect('/register');
     }
 })
-
-// app.post('/ticket/:tid', checkAuthenticated && checkSupportUserRole, (req, res) => {
-//     res.render('Ticket.ejs', {
-//         /* 
-//             Ticket info
-//         */ 
-//     })
-// })
 
 app.delete('/logout', (req, res) => {
     req.logOut();
