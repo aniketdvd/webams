@@ -206,7 +206,6 @@ app.post('/ticket', checkAuthenticated, (req, res) => {
     if(req.user.role === "dev") {
         let tid = req.query.tid;
         var ticketIndex = allTickets.findIndex(p => p.ticketid == tid);
-        console.log("IIIIIIII: "+ticketIndex);
         res.render('Ticket.ejs', {
             version: webamsVersion,
             tickets: allTickets,
