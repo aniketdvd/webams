@@ -12,8 +12,18 @@
           <p class="separator">
           <div class="review-left left">
             <div>
+              <h4>
+                Issue
+              </h4>
+              <%=tickets[eth].title%>
+              <h4>
+                Read description
+              </h4>
+              <%=tickets[eth].description%>
+            </div>
+            <div>
               <select name="changeStatus">
-                <option>change status</option>
+                <option><%=tickets[eth].status%></option>
                 <option>Assigned</option>
                 <option>In progress</option>
                 <option>Won't fix</option>
@@ -22,7 +32,7 @@
             </div>
             <div>
               <select name="changePriority">
-                <option>change priority</option>
+                <option><%=tickets[eth].priority%></option>
                 <option>Low</option>
                 <option>Normal</option>
                 <option>Important</option>
@@ -34,9 +44,6 @@
             <a href="/">Cancel</a> 
           </div>
           <div class="review-right right">
-            <div>
-              <%=tickets[eth].description%>
-            </div>
             <div>
               <div>Reported on : <%=tickets[eth].date%></div>
               <div>Reported at : <%=tickets[eth].time%></div>
