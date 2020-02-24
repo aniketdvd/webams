@@ -145,17 +145,17 @@ cursor: not-allowed;
 }
 
 .Low {
-    background-image: linear-gradient(10deg, #8d8dff, rgba(0,0,0,0));
+    background-color: #8d8dffba;
 }
 .Normal {
-    background-image: linear-gradient(10deg, #7fbf7f, rgba(0,0,0,0));
+    background-color: #7fbf7fba;
 }
 .Important{
-    background-image: linear-gradient(10deg, #ffff99, rgba(0,0,0,0));
+    background-color: #ffff99ba;
 }
 .Critical {
-    background-image: linear-gradient(10deg, #ffc04c, rgba(0,0,0,0));
+    background-color: #ffc04cba;
 }
 .Extreme {
-    background-image: linear-gradient(10deg, #ff7f7f, rgba(0,0,0,0));
+    background-color: #ff7f7fba;
 }
