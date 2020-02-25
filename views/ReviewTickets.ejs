@@ -14,7 +14,6 @@
               <h3>No incidents available</h3>
             <% } else { %>
               <div class="legends">
-                Priorities (Low to high scale): 
                 <div class="legend Low">
                 </div>
                 <div class="legend Normal">
@@ -24,9 +23,8 @@
                 <div class="legend Critical">
                 </div>
                 <div class="legend Extreme">
-                </div>
-                Client: 
-                <input list="clients" name="client" class="client-filter">
+                </div> 
+                <input list="clients" name="client" class="client-filter" placeholder="Client">
                 <datalist id="clients">
                   <option value="Test"></option>
                 </datalist>
