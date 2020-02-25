@@ -13,6 +13,19 @@
             <% if(tickets == '') { %>
               <h3>No incidents available</h3>
             <% } else { %>
+              <div class="legends">
+                Priorities (Low to high scale): 
+                <div class="legend Low">
+                </div>
+                <div class="legend Normal">
+                </div>
+                <div class="legend Important">
+                </div>
+                <div class="legend Critical">
+                </div>
+                <div class="legend Extreme">
+                </div>
+              </div>
               <% for(var i = 0; i < tickets.length; ++i ) {%>
                 <form action="/ticket?tid=<%=tickets[i].ticketid%>" method="POST">
                 <div class="ticket <%=tickets[i].priority%>">

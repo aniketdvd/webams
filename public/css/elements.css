@@ -159,3 +159,32 @@ cursor: not-allowed;
 .Extreme {
     background-color: #ff7f7fba;
 }
+
+.legends {
+    background-color: white;
+    z-index: 99;
+    padding-bottom: 30px;
+    position: sticky;
+    top: 0;
+}
+
+.legend {
+    position: relative;
+    top: 15px;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    border-radius: 100pt;
+    margin-right: 20px;
+    border: 5px white solid;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.legend:hover{
+    position: relative;
+    top: 15px;
+    height: 35px;
+    width: 35px;
+    margin-left: 2.5px;
+    transition: ease-in;
+    transition-duration: 0.2s;
+}
