@@ -7,7 +7,7 @@
 <body>
     <%- include partials/NavLoggedIn.ejs %>
     <main>
-      <div class="container">
+      <form action="/updateTicket?tid=<%=tickets[eth].ticketid%>" method="POST" class="container">
         <h1>Reviewing Incident id: <span class="light"><%=tickets[eth].ticketid%></span></h1>
           <p class="separator">
           <div class="review-left left">
@@ -49,7 +49,7 @@
               <div>Reported at : <%=tickets[eth].time%></div>
             </div>
           </div>  
-      </div>
+        </form>
     </main>
     <%- include partials/Footer.ejs %>
 </body>

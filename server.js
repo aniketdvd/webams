@@ -127,6 +127,7 @@ app.get('/', checkAuthenticated, (req, res) => {
             version: webamsVersion
         });
     } else if (req.user.role === "dev") {
+        refreshUnresolvedTicketList();
         res.render('IndexDev.ejs', { 
             name: req.user.name,
             version: webamsVersion
@@ -212,6 +213,23 @@ app.post('/ticket', checkAuthenticated, (req, res) => {
             eth: ticketIndex
         });
     }
+})
+
+app.post('/updateTicket', checkAuthenticated && checkSupportUserRole, (req, res) => {
+    connection.query(query.sqlUpdateTicket, 
+        [
+            req.body.changePriority,
+            req.body.changeStatus,
+            req.query.tid
+        ], (err, res) => {
+            if (err) {
+                throw err;
+            }
+            console.log("::Ticket updation successful::");
+        }        
+    );
+    refreshUnresolvedTicketList(),
+    res.redirect('/');
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {

@@ -14,7 +14,7 @@
           <h3>You have not reported any incidents yet.</h3>
         <% } else { %>
           <% for(var i = 0; i < tickets.length; ++i ) {%>
-          <div class="ticket">
+          <div class="ticket <%=tickets[i].priority%>">
             <details>
               <summary>
                 <span class="ticket-title">
@@ -38,7 +38,6 @@
               <%=tickets[i].status%>
             </span>
           </div>
-          <hr/>
           <% } %>
         <% } %>
         </div>
