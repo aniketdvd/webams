@@ -188,3 +188,10 @@ cursor: not-allowed;
     transition: ease-in;
     transition-duration: 0.2s;
 }
+
+.client-filter {
+    background-color: #f0f0f0;
+    border-radius: 3pt;
+    border: 0;
+    padding: 10px;
+}
