@@ -191,14 +191,15 @@ app.post('/feedback', checkAuthenticated && checkClientUserRole, (req, res) => {
     }
 })
 
-app.post('/issues', checkAuthenticated && checkSupportUserRole, (req, res) => {
+app.post('/issues', checkAuthenticated, (req, res) => {
     refreshUnresolvedTicketList();
     if(req.user.role === "dev") {
         res.render('ReviewTickets.ejs', {
             name: req.user.name,
             email: req.user.email,
             version: webamsVersion,
-            tickets: allTickets
+            tickets: allTickets,
+            ulist: users
         });
     }
 })

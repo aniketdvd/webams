@@ -26,7 +26,9 @@
                 </div> 
                 <input list="clients" name="client" class="client-filter" placeholder="Client">
                 <datalist id="clients">
-                  <option value="Test"></option>
+                  <% for(var i = 0; i < ulist.length; ++i) { %>
+                  	<option value="<%=ulist[i].name%>"></option>
+									<% } %>
                 </datalist>
               </div>
               <% for(var i = 0; i < tickets.length; ++i ) {%>
